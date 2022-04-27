@@ -1,0 +1,86 @@
+﻿@model ModelData
+
+@{
+    ViewData["Title"] = "EREN CAN AKTAS";
+
+}
+
+<div class="container-fluid pl-5 pr-5 pb-5 m-0 h-100">
+    <!--background: #355c7d; background: linear-gradient(to right, #355c7d, #6c5b7b, #c06c84)-->
+    <div class="row pt-5">
+        <div class="col-12">
+            <h1 class="pb-3 text-center text-white">Kullanıcı Ekle</h1>
+        </div>
+        <div class="col-6 pr-5 pl-5">
+            <form asp-action="Index" asp-controller="Home" method="post">
+                <div class="mb-3 form-group">
+                    <label asp-for="User.Name" class="form-label" style="font-weight: bold; font-size: 20px">Ad</label>
+                    <input type="text" class="form-control" asp-for="User.Name">
+                    <span class="form-text" asp-validation-for="User.Name"></span>
+                </div>
+                <div class="mb-3 form-group">
+                    <label asp-for="User.Surname" class="form-label" style="font-weight: bold; font-size: 20px">Soyad</label>
+                    <input type="text" class="form-control" asp-for="User.Surname">
+                    <span class="form-text" asp-validation-for="User.Surname"></span>
+                </div>
+                <div class="mb-3 form-group">
+                    <label asp-for="User.Email" class="form-label" style="font-weight: bold; font-size: 20px">E-mail</label>
+                    <input type="email" class="form-control" asp-for="User.Email">
+                    <span class="form-text" asp-validation-for="User.Email"></span>
+                </div>
+                <div class="mb-3 form-group">
+                    <label asp-for="User.Phone" class="form-label" style="font-weight: bold; font-size: 20px">Cep Telefonu</label>
+                    <input type="number" class="form-control" asp-for="User.Phone">
+                    <span class="form-text" asp-validation-for="User.Phone"></span>
+                </div>
+                <div class="mb-3 form-group">
+                    <label asp-for="User.Description" class="form-label" style="font-weight: bold; font-size: 20px">Açıklama</label>
+                    <input type="text" class="form-control" asp-for="User.Description">
+                    <span class="form-text" asp-validation-for="User.Description"></span>
+                </div>
+                <div class="mb-3 form-group">
+                    <label asp-for="User.Password" class="form-label" style="font-weight: bold; font-size: 20px">Şifre</label>
+                    <input type="password" class="form-control" asp-for="User.Password">
+                    <span class="form-text" asp-validation-for="User.Password"></span>
+                </div>
+                <div class="mb-3 form-group">
+                    <label asp-for="User.ConfirmPassword" class="form-label" style="font-weight: bold; font-size: 20px">Tekrar Şifre</label>
+                    <input type="password" class="form-control" asp-for="User.ConfirmPassword">
+                    <span class="form-text " asp-validation-for="User.ConfirmPassword"></span>
+                </div>
+                <div class="text-center"><button type="submit" class="btn btn-lg btn-outline-light">Ekle</button></div>
+            </form>
+
+        </div>
+
+        <div class="col-6">
+            <table class="table table-striped text-white" style="background-color: rgba(0,0,0,0)">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Surname</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Password</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Users)
+                    {
+                        <tr>
+                            <th scope="row">@item.Id</th>
+                            <td>@item.Name</td>
+                            <td>@item.Surname</td>
+                            <td>@item.Email</td>
+                            <td>@item.Phone</td>
+                            <td>@item.Description</td>
+                            <td>@item.Password</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
